@@ -60,8 +60,9 @@ public class Gestor extends JFrame {
 	 * Create the frame.
 	 */
 	public Gestor() {
+		addWindowListener(new Salir());
 		setTitle("Gestor de Tareas");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		setBounds(100, 100, 439, 310);
 		setJMenuBar(getMenuBar_1());
 		contentPane = new JPanel();
@@ -166,6 +167,15 @@ public class Gestor extends JFrame {
 	private JMenuItem getMntmSalir() {
 		if (mntmSalir == null) {
 			mntmSalir = new JMenuItem("Salir");
+			mntmSalir.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					int salir = JOptionPane.showConfirmDialog(rootPane, " ¿Deseas salir del programa? ", " Aceptar ", JOptionPane.YES_NO_OPTION);
+					
+					if (salir == JOptionPane.YES_OPTION) {
+						System.exit(0);
+					}
+				}
+			});
 		}
 		return mntmSalir;
 	}
@@ -190,6 +200,8 @@ public class Gestor extends JFrame {
 		}
 		
 	}
+	
+	
 	
 }
 
